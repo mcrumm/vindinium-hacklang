@@ -1,0 +1,9 @@
+# composer
+composer.phar
+vendor/
+# hhvm stdlib headers
+hhi/
+# vagrant
+Vagrantfile
+.vagrant/
+puphpet/

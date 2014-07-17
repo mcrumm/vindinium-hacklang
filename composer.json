@@ -5,11 +5,7 @@
   "keywords": [ "vindinium", "hack", "hacklang", "hhvm" ],
   "require": {
     "guzzlehttp/guzzle-services": "0.*",
-    "symfony/console": "2.5.*",
-    "symfony/yaml": "2.5.*"
-  },
-  "require-dev": {
-      "hackpack/hackunit": "0.*"
+    "symfony/console": "2.5.*"
   },
   "minimum-stability": "stable",
   "autoload": {

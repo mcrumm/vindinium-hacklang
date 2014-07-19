@@ -9,7 +9,7 @@ final class Pos {
     public function __construct(public int $x, public int $y) {}
 
     public function neighbors() : ImmVector<Pos> {
-        return Aim::members()->map($dir ==> $this->to($dir)());
+        return Aim::members()->map($dir ==> $this->to($dir));
     }
 
     public function to(Aim $dir) : this {

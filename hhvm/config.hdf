@@ -1,0 +1,8 @@
+# This file is managed by puppet.
+
+ResourceLimit {
+  SocketDefaultTimeout = 0      # in seconds
+}
+Http {
+  SlowQueryThreshold = 0          # in ms
+}

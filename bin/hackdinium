@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?hh
+
+require realpath(__DIR__ . '/../vendor/autoload.php');
+
+use Hackdinium\Bot;
+
+(new Hackdinium\Kernel($argv))->run(new Bot\RandomBot());

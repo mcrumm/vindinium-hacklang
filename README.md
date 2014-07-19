@@ -34,7 +34,7 @@ OPTIONS
     --turns[=<value>]
         Number of Turns / Number of Arena Games
     -m [<value>]
-        Training mode map type [1..6]
+        Training mode map [m1..m6]
     -h [<value>]
     --host[=<value>]
         The host URL

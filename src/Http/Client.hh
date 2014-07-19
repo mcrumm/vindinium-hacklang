@@ -26,7 +26,7 @@ class Client {
         return $this->send('training', [ 'turns' => $turns, 'map' => $map ]);
     }
 
-    public function move(string $url, Aim\Dir $dir) : Input {
+    public function move(string $url, Aim $dir) : Input {
         $url = str_replace((string)$this->description->getBaseUrl() . 'api/', '', $url);
         return $this->send('move', [ 'url' => $url, 'dir' => (string) $dir ]);
     }

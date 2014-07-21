@@ -1,8 +1,7 @@
 # composer
 composer.phar
 vendor/
-# hhvm stdlib headers
-hhi/
 # vagrant
 .vagrant/
-puphpet/
+# hhi headers
+/hhi/

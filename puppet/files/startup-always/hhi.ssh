@@ -1,0 +1,14 @@
+#!/bin/bash
+
+HHI_DEST="/vagrant/hhi"
+
+if [ ! -d $HHI_DEST ]; then
+  if [ -d "/usr/share/hhvm/hack/hhi" ]; then
+    cp -r /usr/share/hhvm/hack/hhi $HHI_DEST
+  else
+    git clone --depth 1 --branch "HHVM-3.2" https://github.com/facebook/hhvm.git tmp_hhvm
+    cp -rf tmp_hhvm/hphp/hack/hhi $HHI_DEST
+    rm -rf tmp_hhvm
+    rm -rf "$HHI_DEST/stdlib"
+  fi
+fi

@@ -4,6 +4,5 @@ vendor/
 # hhvm stdlib headers
 hhi/
 # vagrant
-Vagrantfile
 .vagrant/
 puphpet/

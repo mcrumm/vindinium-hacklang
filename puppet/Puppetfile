@@ -1,0 +1,9 @@
+forge "http://forge.puppetlabs.com"
+mod 'vcsrepo', :git => 'https://github.com/puppetlabs/puppetlabs-vcsrepo.git'
+mod 'hhvm', :git => 'https://github.com/mcrumm/puppet-hhvm.git'
+mod 'composer', :git => 'https://github.com/willdurand/puppet-composer.git'
+mod 'ntp', :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git'
+mod 'git', :git => 'https://github.com/puppetlabs/puppetlabs-git.git'
+mod 'nginx', :git => 'https://github.com/jfryman/puppet-nginx.git'
+mod 'mongodb', :git => 'https://github.com/puppetlabs/puppetlabs-mongodb.git'
+mod 'scala', :git => 'https://github.com/garethr/garethr-scala.git'

@@ -1,0 +1,6 @@
+---
+server:
+    packages:
+        - vim
+        - htop
+    _prevent_empty: ''

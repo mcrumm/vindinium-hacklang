@@ -4,7 +4,7 @@
   "license": "MIT",
   "keywords": [ "vindinium", "hack", "hacklang", "hhvm" ],
   "require": {
-    "guzzlehttp/guzzle-services": "0.*",
+    "mcrumm/vindinium-guzzle": "0.2.*",
     "aura/cli": "2.0.*@dev",
     "eloquent/enumeration": "5.1.*"
   },

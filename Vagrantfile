@@ -7,7 +7,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "puphpet/ubuntu1404-x64"
   config.vm.network "forwarded_port", guest: 80, host: 9000
-  #config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.network :private_network, ip: '192.168.50.50'
+  config.vm.synced_folder '.', '/vagrant', nfs: true
 
   config.vm.provider "virtualbox" do |vb|
     host = RbConfig::CONFIG['host_os']
@@ -31,6 +32,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--cpus", cpus] 
   end
 
+  config.vm.provision "shell" do |s|
+    s.path = "puppet/shell/initial-setup.sh"
+    s.args = "/vagrant/puppet"
+  end
   config.vm.provision :shell do |s|
     s.path = "puppet/shell/execute-files.sh"
     s.args = ["exec-once", "exec-always"]
@@ -46,10 +51,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision 'puppet' do |puppet|
+    puppet.facter = {
+      "ssh_username"     => "vagrant",
+      "provisioner_type" => ENV['VAGRANT_DEFAULT_PROVIDER'],
+    }
     puppet.manifests_path     = 'puppet'
     puppet.module_path        = 'puppet/modules'
-    puppet.hiera_config_path  = 'puppet/config.yaml'
-    puppet.options            = [ '--verbose', '--debug' ]
+    puppet.hiera_config_path  = 'puppet/hiera.yaml'
+    puppet.options            = [ '--parser=future' ]
   end
 
   config.ssh.forward_agent = true

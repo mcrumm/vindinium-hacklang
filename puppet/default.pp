@@ -4,9 +4,7 @@ if $server_values == undef {
 
 $www_domain = hiera('domain', 'hackdinium.dev')
 
-class { 'apt': }
-
-Class['::apt::update'] -> Package <|
+Class['apt::update'] -> Package <|
     title != 'python-software-properties'
 and title != 'software-properties-common'
 |>
@@ -14,6 +12,8 @@ and title != 'software-properties-common'
 Exec { path => [ '/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/', '/usr/local/bin', '/usr/local/sbin' ] }
 
 Wget::Fetch { cache_dir   => '/var/cache/wget' }
+
+include apt
 
 if ! defined(Package['augeas-tools']) {
   package { 'augeas-tools':
@@ -169,14 +169,18 @@ nginx::resource::location { "${www_domain}--root":
 }
 
 file { 'vindinium-upstart':
-  path   => '/etc/init/vindinium.conf',
-  ensure => 'file',
-  source => '/vagrant/puppet/files/upstart/vindinium.conf',
+  path    => '/etc/init/vindinium.conf',
+  ensure  => 'file',
+  owner   => 'root',
+  group   => 'root',
+  source  => '/vagrant/puppet/files/upstart/vindinium.conf',
   require => [ Exec['sbt stage'], Service['mongodb'], Nginx::Resource::Vhost["${www_domain}"] ]
 }
 
 service { 'vindinium':
-  ensure    => running,
-  hasstatus => true,
-  require   => File['vindinium-upstart']
+  ensure     => running,
+  enable     => true,
+  hasstatus  => true,
+  hasrestart => true,
+  require    => File['vindinium-upstart']
 }

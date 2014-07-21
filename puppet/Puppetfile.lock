@@ -1,0 +1,85 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    maestrodev/wget (1.4.4)
+    puppetlabs/apt (1.5.1)
+      puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/concat (1.1.0)
+      puppetlabs/stdlib (>= 4.0.0)
+    puppetlabs/stdlib (4.3.2)
+
+GIT
+  remote: https://github.com/garethr/garethr-scala.git
+  ref: master
+  sha: 3a29821c801d60cda9c186384bbab42dcc97c612
+  specs:
+    scala (0.1.2)
+      maestrodev/wget (>= 0)
+      puppetlabs/stdlib (>= 0)
+
+GIT
+  remote: https://github.com/jfryman/puppet-nginx.git
+  ref: master
+  sha: 61b569ca02e11a86c1abf647490b5f98a4aee03c
+  specs:
+    nginx (0.0.9)
+      puppetlabs/apt (>= 1.0.0)
+      puppetlabs/concat (>= 1.1.0)
+      puppetlabs/stdlib (>= 3.0.0)
+
+GIT
+  remote: https://github.com/mcrumm/puppet-hhvm.git
+  ref: master
+  sha: 033d819cb5651438c6451ac841e60b5feca55cf0
+  specs:
+    hhvm (0.0.1)
+
+GIT
+  remote: https://github.com/puppetlabs/puppetlabs-git.git
+  ref: master
+  sha: 12c1ded6dcfe794cc4ad473bcacadd6f423f10a3
+  specs:
+    git (0.0.1)
+
+GIT
+  remote: https://github.com/puppetlabs/puppetlabs-mongodb.git
+  ref: master
+  sha: 4747b825b2e4fa9f61bee57421fd01c211fdba00
+  specs:
+    mongodb (0.8.0)
+      puppetlabs/apt (>= 1.0.0)
+      puppetlabs/stdlib (>= 2.2.0)
+
+GIT
+  remote: https://github.com/puppetlabs/puppetlabs-ntp.git
+  ref: master
+  sha: 7789a907b272c8c992337ccfed6ff129fd192343
+  specs:
+    ntp (3.1.0)
+      puppetlabs/stdlib (>= 4.0.0)
+
+GIT
+  remote: https://github.com/puppetlabs/puppetlabs-vcsrepo.git
+  ref: master
+  sha: 177618e2ccdd610890e04502923b39a61f7cb40a
+  specs:
+    vcsrepo (0.0.1)
+
+GIT
+  remote: https://github.com/willdurand/puppet-composer.git
+  ref: master
+  sha: b2efd352b1745f983bb803f98076a65435420691
+  specs:
+    composer (0.0.8)
+      maestrodev/wget (>= 1.2.0)
+
+DEPENDENCIES
+  composer (>= 0)
+  git (>= 0)
+  hhvm (>= 0)
+  mongodb (>= 0)
+  nginx (>= 0)
+  ntp (>= 0)
+  scala (>= 0)
+  vcsrepo (>= 0)
+

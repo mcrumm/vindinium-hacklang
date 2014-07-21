@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a1241155ee39b4edcafadcacf6263500",
+    "hash": "6f8dcc0d28a46bb06a00721c2eef9b35",
     "packages": [
         {
             "name": "aura/cli",
@@ -311,22 +311,55 @@
                 "stream"
             ],
             "time": "2014-07-19 18:43:42"
+        },
+        {
+            "name": "mcrumm/vindinium-guzzle",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcrumm/vindinium-guzzle.git",
+                "reference": "5eb061be93d4ed2eaa87298c0de7f7652acabca9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcrumm/vindinium-guzzle/zipball/5eb061be93d4ed2eaa87298c0de7f7652acabca9",
+                "reference": "5eb061be93d4ed2eaa87298c0de7f7652acabca9",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle-services": "0.3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Vindinium\\Http\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Crumm",
+                    "email": "mike@crumm.net"
+                }
+            ],
+            "description": "Vindinium client in Guzzle4",
+            "keywords": [
+                "Guzzle",
+                "vindinium"
+            ],
+            "time": "2014-07-21 06:30:31"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "aura/cli": 20
     },
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "prefer-stable": false,
+    "platform": [],
+    "platform-dev": []
 }

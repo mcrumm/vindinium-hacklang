@@ -10,7 +10,6 @@ use Hackdinium\Server;
 class Shell {
     const ARG_KEY   = 1;
     const ARG_MODE  = 2;
-    const ARG_TURNS = 3;
 
     private Stdio $io;
     private Context $context;
@@ -77,7 +76,7 @@ class Shell {
             throw new \InvalidArgumentException('You must specify your API key.');
         }
 
-        return new Server($key, $getopt->get('--host', null));
+        return new Server($key, $getopt->get('-h', 'http://vindinium.org'));
     }
 
     private function printUsage(string $name = 'hackdinium') : void {
@@ -93,10 +92,10 @@ class Shell {
         $server = $this->makeServer($getopt);
 
         if ('arena' === $mode) {
-            $kernel->arena($server, (int)$getopt->get(self::ARG_TURNS, PHP_INT_MAX));
+            $kernel->arena($server, (int)$getopt->get('-t', PHP_INT_MAX));
         } else {
-            $turns  = (int) $getopt->get('--turns', 200);
-            $map    = $getopt->get('--map', null);
+            $turns  = (int) $getopt->get('-t', 200);
+            $map    = $getopt->get('-m', null);
             $kernel->training($server, ($server) ==> $server->training($turns, $map));
         }
 

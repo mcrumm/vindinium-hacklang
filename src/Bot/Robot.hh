@@ -1,4 +1,4 @@
-<?hh
+<?hh //strict
 namespace Hackdinium\Bot;
 
 use Hackdinium\Aim;
@@ -10,6 +10,6 @@ abstract class Robot implements Bot {
     protected ImmVector<Aim> $aim;
 
     public function __construct() {
-        $this->aim = ImmVector { Aim::NORTH(), Aim::SOUTH(), Aim::EAST(), Aim::WEST() };
+        $this->aim = ImmVector { Aim::NORTH(), Aim::EAST(), Aim::SOUTH(), Aim::WEST() };
     }
 }

@@ -1,10 +1,9 @@
 <?hh //strict
-
 namespace Hackdinium\Game;
 
 use Hackdinium\Tile\Tile;
 
-class Board {
+final class Board {
     public function __construct(public int $size, public Vector<Tile> $tiles) {}
 
     public function at(Pos $pos) : ?Tile {

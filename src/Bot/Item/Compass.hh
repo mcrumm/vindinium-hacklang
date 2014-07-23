@@ -1,5 +1,4 @@
 <?hh //strict
-
 namespace Hackdinium\Bot\Item;
 
 use Hackdinium\Aim;

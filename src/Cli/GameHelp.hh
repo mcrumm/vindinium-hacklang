@@ -9,7 +9,7 @@ class GameHelp extends Help {
         $this->setUsage('<key> <[<<cyan>>training|<<red>>arena<<reset>>]> [-t,--turns=<<yellow>>300<<reset>>] [-h,--host=<<yellow>>"http://vindinium.org/"<<reset>>]');
         $this->setOptions([
             't,turns::' => 'Number of Turns / Number of Arena Games',
-            'm::'       => 'Training mode map [m1..m6]',
+            'm,map::'   => 'Training mode map [m1..m6]',
             'h,host::'  => 'The host URL'
         ]);
         $this->setDescr(<<<'EOD'

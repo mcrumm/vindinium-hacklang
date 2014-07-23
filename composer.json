@@ -4,6 +4,7 @@
   "license": "MIT",
   "keywords": [ "vindinium", "hack", "hacklang", "hhvm" ],
   "require": {
+    "hhvm": ">=3.2.0",
     "mcrumm/vindinium-guzzle": "0.2.*",
     "aura/cli": "2.0.*@dev",
     "eloquent/enumeration": "5.1.*"

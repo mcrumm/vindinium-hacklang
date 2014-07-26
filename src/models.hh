@@ -34,6 +34,15 @@ final class Aim extends Util\Enum {
     const EAST  = 'East';
     const SOUTH = 'South';
     const WEST  = 'West';
+    const STAY  = 'Stay';
+    private static ?ImmVector<Aim> $cardinal = null;
+    public static function toCardinal() : ImmVector<Aim> {
+        $cardinal = self::$cardinal;
+        if (null == $cardinal) {
+            $cardinal = parent::toImmVector()->filter( ($a) ==> Aim::STAY() !== $a );
+        }
+        return $cardinal;
+    }
 }
 
 final class Hero {

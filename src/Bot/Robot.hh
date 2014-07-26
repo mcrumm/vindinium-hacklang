@@ -10,6 +10,6 @@ abstract class Robot implements Bot {
     protected ImmVector<Aim> $aim;
 
     public function __construct() {
-        $this->aim = ImmVector { Aim::NORTH(), Aim::EAST(), Aim::SOUTH(), Aim::WEST() };
+        $this->aim = Aim::toCardinal();
     }
 }

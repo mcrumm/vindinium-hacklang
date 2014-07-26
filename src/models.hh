@@ -20,12 +20,24 @@ class Tile {
 
         throw new \InvalidArgumentException(sprintf('Unknown tile "%s"', $str));
     }
+
+    public function is(string $t) : bool {
+      return $this instanceof $t;
+    }
+
+    public function exists((function(Tile) : bool) $f) : bool {
+      return $f($this);
+    }
 }
 final class Air         extends Tile {}
 final class Wall        extends Tile {}
 final class Tavern      extends Tile {}
 final class HeroTile    extends Tile { public function __construct(public int $id) {} }
 final class MineTile    extends Tile { public function __construct(public ?int $heroId) {} }
+final class NullTile    extends Tile {
+    public function is(string $t) : bool { return false; }
+    public function exists( (function(Tile) : bool) $f) : bool { return false; }
+}
 
 namespace Hackdinium;
 
@@ -62,7 +74,7 @@ final class Game {
         public string $id,
         public int $turn,
         public int $maxTurns,
-        public Vector<Hero> $heroes,
+        public ImmMap<int, Hero> $heroes,
         public Game\Board $board,
         public bool $finished
     ) {}

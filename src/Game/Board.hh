@@ -2,12 +2,16 @@
 namespace Hackdinium\Game;
 
 use Hackdinium\Tile\Tile;
+use Hackdinium\Tile\NullTile;
 
 final class Board {
-    public function __construct(public int $size, public Vector<Tile> $tiles) {}
+    private NullTile $nil;
+    public function __construct(public int $size, public Vector<Tile> $tiles) {
+        $this->nil = new NullTile();
+    }
 
-    public function at(Pos $pos) : ?Tile {
-        return $pos->within($this->size) ? $this->tiles->at($pos->x * $this->size + $pos->y) : null;
+    public function at(Pos $pos) : Tile {
+        return $pos->within($this->size) ? $this->tiles->at($pos->x * $this->size + $pos->y) : $this->nil;
     }
 
     public static function parseTiles(string $str) : Vector<Tile> {

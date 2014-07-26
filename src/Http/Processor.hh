@@ -39,11 +39,9 @@ class Processor implements SubscriberInterface {
         foreach ($invoked->getParameters() as $p) {
             $key = $p->name;
 
-            // Overload heroes array with a Vector
+            // Overload heroes array with an ID indexed ImmMap
             if ('heroes' === $key) {
-                $args[] = Vector::fromItems($data[$key])->map(
-                    $h ==> $this->toModel($h, Hero::class)
-                );
+                $args[] = $this->generateHeroesMap($data[$key]);
                 continue;
             }
 
@@ -60,6 +58,17 @@ class Processor implements SubscriberInterface {
         }
 
         return $class->newInstanceArgs($args);
+    }
+
+    private function generateHeroesMap(array $data) : ImmMap<int, Hero> {
+        $getPairs = ($heroes) ==> {
+            foreach ($heroes as $hero) {
+                $hero = $this->toModel($hero, Hero::class);
+                yield Pair { $hero->id, $hero };
+            }
+        };
+
+        return ImmMap::fromItems($getPairs($data));
     }
 
     private function getParameterType(\ReflectionParameter $p) : ?string {

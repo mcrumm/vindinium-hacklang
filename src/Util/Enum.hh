@@ -6,13 +6,23 @@ use Hackdinium\Printable;
 
 abstract class Enum extends AbstractEnumeration {
     use Printable;
+    private static ?ImmVector<Enum> $immVector = null;
+    private static ?Vector<Enum> $vector = null;
 
     public static function toImmVector() : ImmVector<Enum> {
-        return new ImmVector(self::members());
+        $iv = self::$immVector;
+        if (null === $iv) {
+            $iv = new ImmVector(self::members());
+        }
+        return $iv;
     }
 
     public static function toVector() : Vector<Enum> {
-        return new Vector(self::members());
+        $v = self::$vector;
+        if (null === $v) {
+            $v = new Vector(self::members());
+        }
+        return $v;
     }
 
     <<Override>> public function __toString() : string {

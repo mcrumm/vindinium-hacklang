@@ -51,7 +51,7 @@ Hackdinium is available via [composer](http://getcomposer.org).
 ```JSON
 {
     "require": {
-        "mcrumm/vindinium-hacklang": "@stable"
+        "mcrumm/vindinium-hacklang": "~0.3"
     }
 }
 ```

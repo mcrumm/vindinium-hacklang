@@ -12,4 +12,9 @@ abstract class Robot implements Bot {
     public function __construct() {
         $this->aim = Aim::toCardinal();
     }
+
+    protected function tooPerilous(string $msg = 'The path is wrought with peril.  Better stay put') : Aim {
+        echo $msg . "\n";
+        return Aim::STAY();
+    }
 }

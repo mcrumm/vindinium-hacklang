@@ -43,6 +43,7 @@ class Shell {
             do {
                 $prev = $ex->getPrevious();
                 $this->io->errln($ex->getMessage());
+                $this->io->errln($ex->getTraceAsString());
                 $ex = $prev;
             } while (null !== $ex);
         });

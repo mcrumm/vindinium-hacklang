@@ -29,7 +29,7 @@ class Processor implements SubscriberInterface {
     private function toModel(array $data, string $name) {
         // Bypass auto-instantiation for the Board
         if (Game\Board::class === $name) {
-            return new Game\Board($data['size'], Game\Board::parseTiles($data['tiles']));
+            return new Game\Board($data['size'], $data['tiles']);
         }
 
         $class      = new \ReflectionClass($name);

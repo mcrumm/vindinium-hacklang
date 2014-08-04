@@ -7,7 +7,7 @@ final class Pos {
     public function __construct(public int $x, public int $y) {}
 
     public function neighbors() : ImmVector<Pos> {
-        return Aim::toImmVector()->map($dir ==> $this->to($dir));
+        return Aim::toCardinal()->map($dir ==> $this->to($dir));
     }
 
     public function to(Aim $dir) : this {
@@ -27,6 +27,10 @@ final class Pos {
         elseif  ($pos->y > $this->y) { return Aim::EAST(); }
         elseif  ($pos->x < $this->x) { return Aim::NORTH(); }
         return null;
+    }
+
+    public function toInt(int $size) : int {
+        return !$this->within($size) ? -1 : $this->x * $size + $this->y;
     }
 
     public function within(int $size) : bool {

@@ -9,12 +9,18 @@
     "aura/cli": "2.0.*@dev",
     "eloquent/enumeration": "5.1.*"
   },
+  "require-dev": {
+      "hackpack/hackunit": "~0.3"
+  },
   "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
         "Hackdinium\\": "src/"
     },
-    "files": [ "src/models.hh" ]
+    "files": [ "src/functions.hh", "src/models.hh" ]
+  },
+  "config": {
+      "bin-dir": "bin"
   },
   "bin": [ "bin/hackdinium" ]
 }

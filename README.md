@@ -82,6 +82,5 @@ However, there are a few `partial` objects/namespaces, as well:
 
 - [Hackdinium\Cli](src/Cli) depends on [Aura.Cli](https://github.com/auraphp/Aura.Cli).
 - [Hackdinium\Http](src/Http) extends [vindium-guzzle](https://github.com/mcrumm/vindinium-guzzle), which itself depends on [Guzzle4](https://github.com/guzzle/guzzle).
-- [Hackdinium\Util\Enum](src/Util/Enum.hh) depends on [Eloquent\Enumeration](https://github.com/eloquent/enumeration).
 
 > If I had my way, I'd never work... I'd paint, and read, and play violin. I'd climb the mountains, and sing the songs that I like to sing. But I don't got that kinda time. --[P. Diddy](http://m.imdb.com/title/tt0353049/quotes?qt=qt0312304)

@@ -1,7 +1,7 @@
 <?hh
 namespace Hackdinium\Util;
 
-final class Queue<T> extends \SplQueue<T> implements \IteratorAggregate<T> {
+final class Queue<T> extends \SplQueue<T> {
     public static function factory(?Iterable<T> $values = null): this {
         $q = new self();
         if (null === $values) {
@@ -17,7 +17,7 @@ final class Queue<T> extends \SplQueue<T> implements \IteratorAggregate<T> {
         return $this;
     }
 
-    public function getIterator(): \Continuation<T> {
+    public function getIterator(): \Generator<int, T, void> {
         foreach ($this as $item) {
             yield $item;
         }

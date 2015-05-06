@@ -16,7 +16,7 @@ final class Kernel {
     }
 
     public function arena(Server $server, int $games) : void {
-        $oneGame    = $it ==> {
+        $oneGame = $it ==> {
             $it = is_null($it) ? 1 : $it;
             $this->shell->println("[$it/$games] Waiting for pairing...");
             $input = $server->arena();
@@ -43,7 +43,7 @@ final class Kernel {
 
     public function run(?Bot\Bot $bot = null) : void {
         $this->failsafe->on(() ==> {
-            $this->bot = null === $bot ? null : $bot;
+            $this->bot = $bot;
             $this->shell->boot($this);
         });
     }

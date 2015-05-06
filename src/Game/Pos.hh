@@ -4,28 +4,29 @@ namespace Hackdinium\Game;
 use Hackdinium\Aim;
 
 final class Pos {
+    static private ImmVector<Aim> $compass = ImmVector { Aim::North, Aim::East, Aim::South, Aim::West };
+
     public function __construct(public int $x, public int $y) {}
 
     public function neighbors() : ImmVector<Pos> {
-        return Aim::toCardinal()->map($dir ==> $this->to($dir));
+        return self::$compass->map($dir ==> $this->to($dir));
     }
 
     public function to(Aim $dir) : this {
         switch ($dir) {
-            case Aim::NORTH():  return $this->copy(-1,  0);
-            case Aim::EAST():   return $this->copy( 0,  1);
-            case Aim::SOUTH():  return $this->copy( 1,  0);
-            case Aim::WEST():   return $this->copy( 0, -1);
-            case Aim::STAY():   // FALLTHROUGH
-            default:            return $this;
+            case Aim::North:  return $this->copy(-1,  0);
+            case Aim::East:   return $this->copy( 0,  1);
+            case Aim::South:  return $this->copy( 1,  0);
+            case Aim::West:   return $this->copy( 0, -1);
+            case Aim::Stay:   return $this;
         }
     }
 
-    public function dirTo(Pos $pos) : ?Aim {
-        if      ($pos->y < $this->y) { return Aim::WEST(); }
-        elseif  ($pos->x > $this->x) { return Aim::SOUTH(); }
-        elseif  ($pos->y > $this->y) { return Aim::EAST(); }
-        elseif  ($pos->x < $this->x) { return Aim::NORTH(); }
+    public function towards(Pos $pos) : ?Aim {
+        if      ($pos->y < $this->y) { return Aim::West;  }
+        elseif  ($pos->x > $this->x) { return Aim::South; }
+        elseif  ($pos->y > $this->y) { return Aim::East;  }
+        elseif  ($pos->x < $this->x) { return Aim::North; }
         return null;
     }
 

@@ -36,6 +36,10 @@ class Processor implements SubscriberInterface {
         $invoked    = $class->getConstructor();
         $args       = Vector {};
 
+        if (! $invoked) {
+            throw new \RuntimeException(sprintf('Class "%s"  has no constructor.', $name));
+        }
+
         foreach ($invoked->getParameters() as $p) {
             $key = $p->name;
 

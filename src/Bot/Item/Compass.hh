@@ -23,7 +23,7 @@ trait Compass {
 
     public function first((function(Aim): bool) $f, ?Vector<Aim> $v = null, ?Aim $none = null) : Aim {
         $v = null === $v ? $this->aim->toImmVector() : $v->toImmVector();
-        return f\getOrElse(f\find($v, $f), f\getOrElse($none, Aim::STAY()));
+        return f\getOrElse(f\find($v, $f), f\getOrElse($none, Aim::Stay));
     }
 
     private function reduce<T>(Vector<T> $v, (function(T) : bool) $f) : Vector<T> {

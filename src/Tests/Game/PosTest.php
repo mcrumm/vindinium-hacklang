@@ -7,23 +7,23 @@ use HackPack\HackUnit\Core\TestCase;
 
 class PosTest extends TestCase {
     protected Vector<(Pos, Aim, string)> $toProvider;
-    protected Vector<(Pos, Pos, Aim)> $dirToProvider;
+    protected Vector<(Pos, Pos, Aim)> $towardsProvider;
 
     public function __construct(protected string $name) {
         parent::__construct($name);
         $start = new Pos(0, 0);
         $this->toProvider = Vector {
-            tuple($start, Aim::NORTH(), 'x:-1 y:0'),
-            tuple($start, Aim::EAST(),  'x:0 y:1'),
-            tuple($start, Aim::SOUTH(), 'x:1 y:0'),
-            tuple($start, Aim::WEST(),  'x:0 y:-1'),
-            tuple($start, Aim::STAY(),  'x:0 y:0')
+            tuple($start, Aim::North, 'x:-1 y:0'),
+            tuple($start, Aim::East,  'x:1 y:0'),
+            tuple($start, Aim::South, 'x:0 y:1'),
+            tuple($start, Aim::West,  'x:0 y:-1'),
+            tuple($start, Aim::Stay,  'x:0 y:0')
         };
-        $this->dirToProvider = Vector {
-            tuple($start, new Pos(-1, 0), Aim::NORTH()),
-            tuple($start, new Pos(0, 1), Aim::EAST()),
-            tuple($start, new Pos(1, 0), Aim::SOUTH()),
-            tuple($start, new Pos(0, -1), Aim::WEST()),
+        $this->towardsProvider = Vector {
+            tuple($start, new Pos(-1, 0), Aim::North),
+            tuple($start, new Pos(0, 1),  Aim::East),
+            tuple($start, new Pos(1, 0),  Aim::South),
+            tuple($start, new Pos(0, -1), Aim::West),
         };
     }
 
@@ -33,9 +33,9 @@ class PosTest extends TestCase {
         }
     }
 
-    public function testDirTo() : void {
-        foreach ($this->dirToProvider as $item) {
-            $this->expect($item[0]->dirTo($item[1]))->toEqual($item[2]);
+    public function testTowards() : void {
+        foreach ($this->towardsProvider as $item) {
+            $this->expect($item[0]->towards($item[1]))->toEqual($item[2]);
         }
     }
 }

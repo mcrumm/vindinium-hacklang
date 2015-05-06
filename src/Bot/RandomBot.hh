@@ -2,7 +2,6 @@
 namespace Hackdinium\Bot;
 
 use Hackdinium\Aim;
-use Hackdinium\Compass;
 use Hackdinium\Input;
 use Hackdinium\Tile;
 
@@ -11,8 +10,8 @@ class RandomBot extends Robot {
 
     public function move(Input $input) : Aim {
         return $this->first(
-	    (Aim $dir) ==> !is_a($input->game->board->at($input->hero->pos->to($dir)), Tile\Wall::class),
-	    $this->shuffle($this->aim->toVector())
+            (Aim $dir) ==> !is_a($input->game->board->at($input->hero->pos->to($dir)), Tile\Wall::class),
+            $this->shuffle($this->aim->toVector())
         );
     }
 }

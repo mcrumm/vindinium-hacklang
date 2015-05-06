@@ -6,6 +6,7 @@ use Hackdinium\Game\Pos;
 use Hackdinium\Input;
 use Hackdinium\Tile;
 
+<<__ConsistentConstruct>>
 abstract class Guide implements Gadget {
     public function is(Pos $pos, (function(Tile\Tile): bool) $goal): bool {
         return $this->board->at($pos)->exists($goal);
@@ -34,7 +35,7 @@ abstract class Guide implements Gadget {
     public function isTavern(Pos $p): bool {
         return $this->is($p, ($tile) ==> $tile->is(Tile\Tavern::class));
     }
-    
+
     public function isUnownedMine(int $id): (function(Pos): bool) {
         return (Pos $pos) ==> $this->is($pos, ($tile) ==> {
             if (!is_a($tile, Tile\MineTile::class)) {

@@ -22,7 +22,7 @@ class Tile {
     }
 
     public function is(string $t) : bool {
-      return $this instanceof $t;
+        return is_a($this, $t);
     }
 
     public function exists((function(Tile) : bool) $f) : bool {
@@ -41,20 +41,12 @@ final class NullTile    extends Tile {
 
 namespace Hackdinium;
 
-final class Aim extends Util\Enum {
-    const NORTH = 'North';
-    const EAST  = 'East';
-    const SOUTH = 'South';
-    const WEST  = 'West';
-    const STAY  = 'Stay';
-    private static ?ImmVector<Aim> $cardinal = null;
-    public static function toCardinal() : ImmVector<Aim> {
-        $cardinal = self::$cardinal;
-        if (null == $cardinal) {
-            $cardinal = parent::toImmVector()->filter( ($a) ==> Aim::STAY() !== $a );
-        }
-        return $cardinal;
-    }
+enum Aim : string as string {
+    North = 'North';
+    South = 'South';
+    East  = 'East';
+    West  = 'West';
+    Stay  = 'Stay';
 }
 
 final class Hero {
@@ -103,8 +95,4 @@ trait Printable {
     public function __toString() : string {
         return array_slice(explode('\\', static::class), -1)[0];
     }
-}
-
-function getOrElse<T>(?T $var, T $none) : T {
-    return is_null($var) ? $none : $var;
 }

@@ -1,0 +1,5 @@
+hackdinium:
+  build: ./
+  working_dir: /opt/hackdinium
+  volumes:
+    - .:/opt/hackdinium
